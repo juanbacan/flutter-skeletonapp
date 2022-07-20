@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:skeletonproject/providers/user_provider.dart';
 import 'package:skeletonproject/screens/home_screen.dart';
+import 'package:skeletonproject/screens/login_screen.dart';
 import 'package:skeletonproject/screens/welcome_screen.dart';
 
 import 'package:skeletonproject/share_preferences.dart/preferences.dart';
@@ -37,10 +38,17 @@ class MyApp extends StatelessWidget {
             textStyle: const TextStyle(color: Colors.white),
           )
         ),
+        textTheme: const TextTheme(
+          headline1: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.w900,
+          ),
+        )
       ),
-      home: Preferences.welcome ? const WelcomeScreen() : const HomeScreen(),
+      home: Preferences.welcome ? const WelcomeScreen() : const LoginScreen(),
       routes: {
         '/home': (context) => const HomeScreen(),
+        '/login':(context) => const LoginScreen(),
       },
     );
   }
