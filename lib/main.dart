@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:skeletonproject/providers/user_provider.dart';
 import 'package:skeletonproject/screens/home_screen.dart';
 import 'package:skeletonproject/screens/login_screen.dart';
+import 'package:skeletonproject/screens/settings_screen.dart';
 import 'package:skeletonproject/screens/welcome_screen.dart';
 
 import 'package:skeletonproject/share_preferences.dart/preferences.dart';
@@ -45,10 +46,12 @@ class MyApp extends StatelessWidget {
           ),
         )
       ),
-      home: Preferences.welcome ? const WelcomeScreen() : const LoginScreen(),
+      // home: Preferences.welcome ? const WelcomeScreen() : const LoginScreen(),
+      home: Preferences.welcome ? const WelcomeScreen() : const HomeScreen(),
       routes: {
-        '/home': (context) => const HomeScreen(),
-        '/login':(context) => const LoginScreen(),
+        HomeScreen.routeName : (context) => const HomeScreen(),
+        // SettingsScreen.routeName :(context) => const LoginScreen(),
+        SettingsScreen.routeName :(context) => const SettingsScreen(),
       },
     );
   }

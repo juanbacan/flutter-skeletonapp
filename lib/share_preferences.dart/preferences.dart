@@ -43,7 +43,7 @@ class Preferences {
     _prefs.setBool('isDarkmode', value);
   }
 
-// El género del usuarop
+// El género del usuario
   static int get gender {
     return _prefs.getInt('gender') ?? _gender;
   }
