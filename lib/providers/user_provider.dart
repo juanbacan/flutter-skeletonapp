@@ -9,7 +9,7 @@ class UserProvider extends ChangeNotifier{
     required bool isDarkmode
   }): currentTheme = isDarkmode ? ThemeData.dark() : ThemeData.light();
 
-  
+  bool get isDarkmode => currentTheme == ThemeData.dark();
 
   void setLightMode() {
     currentTheme = ThemeData.light();

@@ -4,20 +4,14 @@ import 'package:skeletonproject/providers/user_provider.dart';
 import 'package:skeletonproject/share_preferences.dart/preferences.dart';
 import 'package:skeletonproject/widgets/generales/CustomDrawer.dart';
 
-class SettingsScreen extends StatefulWidget {
 
+class SettingsScreen extends StatelessWidget {
   static const String routeName = '/settings';
-
   const SettingsScreen({Key? key}) : super(key: key);
 
   @override
-  State<SettingsScreen> createState() => _SettingsScreenState();
-}
-
-class _SettingsScreenState extends State<SettingsScreen> {
-
-  @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -34,26 +28,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 const Divider(),
                 SwitchListTile.adaptive(
                   title: const Text('Dark Mode'),
-                  value: Preferences.isDarkmode, 
+                  value: userProvider.isDarkmode, 
                   onChanged: (value) {
-                    Preferences.isDarkmode   = value;
-                    final themeProvider = Provider.of<UserProvider>(context, listen: false);
+                    Preferences.isDarkmode = value;
                     if (value) {
-                      themeProvider.setDarkmode();
+                      userProvider.setDarkmode();
                     } else {
-                      themeProvider.setLightMode();
+                      userProvider.setLightMode();
                     }
-                    setState(() {});
                   }
                 ),
                 const Divider(),
+                Text(userProvider.currentTheme.toString()),
                 RadioListTile<int>(
                   title: const Text('Masculino'),
                   value: 1, 
                   groupValue: Preferences.gender, 
                   onChanged: (value) {
                     Preferences.gender = value ?? 1;
-                    setState(() {});
                   }
                 ),
                 const Divider(),
@@ -63,7 +55,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   groupValue: Preferences.gender, 
                   onChanged: (value) {
                     Preferences.gender = value ?? 2;
-                    setState(() {});
                   }
                 ),
                 const Divider(),
@@ -73,7 +64,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     initialValue: "Juan",
                     onChanged: (value) {
                       Preferences.name = value;
-                      setState(() {});
                     },
                     decoration: const InputDecoration(
                       labelText: 'Nombre',
