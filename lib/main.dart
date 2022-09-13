@@ -30,22 +30,23 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Skeleton App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.purple,
-        // primarySwatch: Colors.blue,
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            primary: Colors.purple,
-            textStyle: const TextStyle(color: Colors.white),
-          )
-        ),
-        textTheme: const TextTheme(
-          headline1: TextStyle(
-            fontSize: 30,
-            fontWeight: FontWeight.w900,
-          ),
-        )
-      ),
+      theme: Provider.of<UserProvider>(context).currentTheme,
+      // theme: ThemeData(
+      //   primaryColor: Colors.purple,
+      //   // primarySwatch: Colors.blue,
+      //   elevatedButtonTheme: ElevatedButtonThemeData(
+      //     style: ElevatedButton.styleFrom(
+      //       primary: Colors.purple,
+      //       textStyle: const TextStyle(color: Colors.white),
+      //     )
+      //   ),
+      //   textTheme: const TextTheme(
+      //     headline1: TextStyle(
+      //       fontSize: 30,
+      //       fontWeight: FontWeight.w900,
+      //     ),
+      //   )
+      // ),
       // home: Preferences.welcome ? const WelcomeScreen() : const LoginScreen(),
       home: Preferences.welcome ? const WelcomeScreen() : const HomeScreen(),
       routes: {
